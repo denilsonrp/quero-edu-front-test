@@ -1,0 +1,42 @@
+@import './../../styles/settings/_colors.scss';
+@import './../../styles/settings/fonts';
+
+* {
+  border: 0;
+  box-sizing: border-box;
+  margin: 0;
+  outline: none;
+  padding: 0;
+
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+ul, ol, li {
+  list-style: none;
+}
+
+body {
+  color: #383838;
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+}
+
+a {
+  color: #383838;
+  cursor: pointer;
+  text-decoration: none;
+
+  &:hover {
+    opacity: .75;
+  }
+}
+
+h1, h2, h3, h4 {
+  font-weight: normal;
+}
+
+button {
+  background-color: transparent;
+  cursor: pointer;
+}
