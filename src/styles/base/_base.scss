@@ -17,13 +17,13 @@ ul, ol, li {
 }
 
 body {
-  color: #383838;
+  color: $black;
   font-family: $font-family-base;
   font-size: $font-size-base;
 }
 
 a {
-  color: #383838;
+  color: $black;
   cursor: pointer;
   text-decoration: none;
 

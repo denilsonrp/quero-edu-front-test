@@ -1,0 +1,34 @@
+@import './../../styles/settings/_media-sizes';
+
+// DISPLAY
+._hide {
+  display: none;
+}
+
+// MARGINS
+._margin-b-1x {
+  margin-bottom: 8px;
+}
+
+._margin-l-1x {
+  margin-left: 8px;
+}
+
+._margin-l-2x {
+  margin-left: 16px;
+}
+
+._margin-t-1x {
+  margin-top: 8px;
+}
+
+@media screen and (min-width: $xl) {
+  // DISPLAY
+  ._show-xl {
+    display: block;
+  }
+
+  ._hide-xl {
+    display: none;
+  }
+}

@@ -1,0 +1,94 @@
+@import './../../styles/settings/_colors.scss';
+@import './../../styles/settings/_media-sizes';
+
+.footer {
+  background-color: $main-blue;
+
+  .contacts {
+    background-color: $secondary-blue;
+
+    .container {
+      display: grid;
+      grid-template-areas:
+        'whatsapp whatsapp whatsapp'
+        'live-chat e-mail help-center';
+      grid-template-columns: repeat(3, 1fr);
+
+      > div {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 24px 0;
+
+        .infos {
+
+          p {
+            color: $white;
+            font-weight: 700;
+          }
+        }
+      }
+
+      .whatsapp {
+        flex-direction: row;
+        grid-area: whatsapp;
+      }
+
+      .live-chat {
+        border-right: 2px solid $main-blue;
+        border-top: 2px solid $main-blue;
+        grid-area: live-chat;
+      }
+
+      .e-mail {
+        border-right: 2px solid $main-blue;
+        border-top: 2px solid $main-blue;
+        grid-area: e-mail;
+      }
+
+      .help-center {
+        border-top: 2px solid $main-blue;
+        grid-area: help-center;
+      }
+    }
+  }
+
+  .copyright {
+    padding: 24px 0;
+    text-align: center;
+
+    > p {
+      color: $white;
+      font-weight: 700;
+
+      > a {
+        color: $white;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $xl) {
+  .footer {
+
+    .contacts {
+
+      .container {
+        grid-template-areas:
+          'whatsapp live-chat e-mail help-center';
+        grid-template-columns: repeat(4, 1fr);
+
+        > div {
+          border: none !important;
+          flex-direction: row;
+          justify-content: flex-start;
+
+          .infos {
+            margin-left: 16px;
+          }
+        }
+      }
+    }
+  }
+}
