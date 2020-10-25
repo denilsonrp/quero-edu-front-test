@@ -11,7 +11,7 @@ const Footer = () => {
       <section className="contacts">
         <div className="container">
           <div className="whatsapp">
-            <FaWhatsapp color="#FFF" size="48px" />
+            <FaWhatsapp color="#FFF" size="48" />
 
             <div className="infos _margin-l-2x">
               <p className="_margin-b-1x">0800 123 2222</p>
@@ -20,7 +20,7 @@ const Footer = () => {
           </div>
 
           <div className="live-chat">
-            <FaComments color="#FFF" size="48px" />
+            <FaComments color="#FFF" size="48" />
 
             <div className="infos">
               <p className="_hide _show-xl _margin-b-1x">Chat ao vivo</p>
@@ -31,7 +31,7 @@ const Footer = () => {
           </div>
 
           <div className="e-mail">
-            <FaEnvelope color="#FFF" size="48px" />
+            <FaEnvelope color="#FFF" size="48" />
 
             <div className="infos">
               <p className="_hide _show-xl _margin-b-1x">Mande um e-mail</p>
@@ -42,7 +42,7 @@ const Footer = () => {
           </div>
 
           <div className="help-center">
-            <FaInfoCircle color="#FFF" size="48px" />
+            <FaInfoCircle color="#FFF" size="48" />
 
             <div className="infos">
               <p className="_hide _show-xl _margin-b-1x">Central de ajuda</p>

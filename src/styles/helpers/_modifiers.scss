@@ -1,0 +1,30 @@
+@import './../../styles/settings/fonts';
+@import './../../styles/settings/colors';
+
+.-green {
+  color: $green;
+}
+
+.-secondary-blue {
+  color: $secondary-blue;
+}
+
+.-bold {
+  font-weight: 700;
+}
+
+.-ft-size-1x {
+  font-size: $font-size-base;
+}
+
+.-ft-size-1_25x {
+  font-size: $font-size-base * 1.25;
+}
+
+.-uppercase {
+  text-transform: uppercase;
+}
+
+.-line-through {
+  text-decoration: line-through;
+}

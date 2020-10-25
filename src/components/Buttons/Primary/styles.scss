@@ -1,0 +1,11 @@
+@import './../../../styles/settings/colors';
+
+.-primary {
+  border-color: $secondary-blue;
+  color: $secondary-blue;
+
+  &:hover {
+    background-color: $secondary-blue;
+    color: $white;
+  }
+}

@@ -1,5 +1,6 @@
-@import './../../styles/settings/_colors.scss';
+@import './../../styles/settings/colors';
 @import './../../styles/settings/fonts';
+@import './../../styles/tools/mixins';
 
 * {
   border: 0;
@@ -39,4 +40,47 @@ h1, h2, h3, h4 {
 button {
   background-color: transparent;
   cursor: pointer;
+}
+
+.filter-enrollment-semester {
+  margin-bottom: 32px;
+  margin-top: 32px;
+}
+
+.list-scholarships {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(4, 1fr);
+
+  .card-scholarship {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 16px;
+    text-align: center;
+
+    @include box-shadow(0, 2px, 5px, 0, rgba(0, 4px, 4px, .2));
+
+    &:first-of-type {
+      justify-content: center;
+    }
+
+    .wrapper-score {
+      display: flex;
+      justify-content: center;
+
+      svg {
+        margin-left: 4px;
+      }
+    }
+
+    hr {
+      background-color: $secondary-gray;
+      height: 3px;
+      margin-bottom: 16px;
+      margin-top: 16px;
+      width: 100%;
+    }
+  }
 }

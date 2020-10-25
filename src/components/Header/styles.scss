@@ -1,5 +1,13 @@
 @import './../../styles/settings/_colors';
 
 .header {
+  display: flex;
   height: 90px;
+  justify-content: space-between;
+  margin-bottom: 32px;
+
+  a, p {
+    color: $secondary-blue;
+    font-weight: 700;
+  }
 }

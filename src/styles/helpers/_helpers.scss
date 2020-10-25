@@ -1,5 +1,21 @@
 @import './../../styles/settings/_media-sizes';
 
+._align-center {
+  align-items: center;
+}
+
+._flex {
+  display: flex;
+}
+
+._flex-1 {
+  flex: 1;
+}
+
+._justify-end {
+  justify-content: flex-end;
+}
+
 // DISPLAY
 ._hide {
   display: none;
@@ -10,6 +26,10 @@
   margin-bottom: 8px;
 }
 
+._margin-b-2x {
+  margin-bottom: 16px;
+}
+
 ._margin-l-1x {
   margin-left: 8px;
 }
@@ -18,8 +38,20 @@
   margin-left: 16px;
 }
 
+._margin-r-1x {
+  margin-right: 8px;
+}
+
 ._margin-t-1x {
   margin-top: 8px;
+}
+
+._margin-t-2x {
+  margin-top: 16px;
+}
+
+._margin-t-4x {
+  margin-top: 32px;
 }
 
 @media screen and (min-width: $xl) {
