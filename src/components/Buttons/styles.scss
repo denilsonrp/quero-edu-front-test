@@ -1,3 +1,4 @@
+@import './../../styles/settings/colors';
 @import './../../styles/tools/mixins';
 
 .btn {
@@ -8,6 +9,12 @@
 
   @include border-radius(5px);
   @include transition(all, .5s);
+
+  &[disabled] {
+    background-color: #CACDCE;
+    border-color: $secondary-gray;
+    cursor: default;
+  }
 
   & + .btn {
     margin-left: 8px;

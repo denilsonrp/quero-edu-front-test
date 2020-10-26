@@ -1,0 +1,65 @@
+@import './../../styles/settings/colors';
+@import './../../styles/settings/media-sizes';
+
+.flatlist-scholarships {
+
+  .card-scholarship {
+    align-items: center;
+    border-top: 3px solid $secondary-gray;
+    display: flex;
+    justify-content: space-between;
+    padding: 24px 0;
+
+    &:last-of-type {
+      border-bottom: 3px solid $secondary-gray;
+    }
+
+    figure {
+      display: flex;
+      justify-content: center;
+      width: 120px;
+
+      img {
+        max-width: 100%;
+      }
+    }
+
+    .wrapper-course-price {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      > div:nth-child(1) {
+        margin-bottom: 16px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $md) {
+  .flatlist-scholarships {
+
+    .card-scholarship {
+
+      figure {
+        width: 200px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $lg) {
+  .flatlist-scholarships {
+
+    .card-scholarship {
+
+      .wrapper-course-price {
+        flex-direction: row;
+
+        > div:nth-child(1) {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}

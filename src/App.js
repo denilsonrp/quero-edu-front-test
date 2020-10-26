@@ -7,6 +7,8 @@ import './styles/base/_normalize.scss'
 import './styles/helpers/_helpers.scss'
 import './styles/helpers/_modifiers.scss'
 import './styles/components/_container.scss'
+import './styles/components/_custom-checkbox.scss'
+import './styles/components/_form.scss'
 
 const App = () => {
 

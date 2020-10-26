@@ -16,6 +16,14 @@
   justify-content: flex-end;
 }
 
+._justify-center {
+  justify-content: center;
+}
+
+._space-between {
+  justify-content: space-between;
+}
+
 // DISPLAY
 ._hide {
   display: none;
@@ -42,6 +50,10 @@
   margin-right: 8px;
 }
 
+._margin-r-2x {
+  margin-right: 16px;
+}
+
 ._margin-t-1x {
   margin-top: 8px;
 }
@@ -54,10 +66,14 @@
   margin-top: 32px;
 }
 
+._text-right {
+  text-align: right;
+}
+
 @media screen and (min-width: $xl) {
   // DISPLAY
   ._show-xl {
-    display: block;
+    display: flex;
   }
 
   ._hide-xl {

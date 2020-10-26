@@ -1,0 +1,42 @@
+@import './../../styles/settings/colors';
+@import './../../styles/settings/media-sizes';
+@import './../../styles/tools/mixins';
+
+.form {
+
+  .row {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(1, 1fr);
+
+    & + .row {
+      margin-top: 16px;
+    }
+  }
+
+  .label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+
+  .select {
+    background-color: transparent;
+    border: 1px solid $secondary-gray;
+    height: 50px;
+    padding: 0 16px;
+    width: 100%;
+
+    @include border-radius(5px);
+  }
+}
+
+@media screen and (min-width: $lg) {
+  .form {
+
+    .row {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}

@@ -15,3 +15,9 @@
   -moz-transition: $property $duration $function;
   transition: $property $duration $function;
 }
+
+@mixin rotate($deg) {
+  -moz-transform: rotate($deg);
+  -webkit-transform: rotate($deg);
+	transform: rotate($deg);
+}
