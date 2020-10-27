@@ -1,0 +1,11 @@
+@import './../../styles/settings/colors';
+
+.-secondary {
+  background-color: $main-yellow;
+  border-color: $secondary-yellow;
+
+  &:not([disabled]):hover {
+    background-color: $secondary-yellow;
+    color: $white;
+  }
+}

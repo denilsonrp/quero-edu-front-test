@@ -19,8 +19,8 @@
     width: 0;
 
     &:checked ~ span {
-      background-color: $secondary-blue;
-      border-color: $secondary-blue;
+      background-color: $main-blue;
+      border-color: $main-blue;
 
       &:after {
         display: block;

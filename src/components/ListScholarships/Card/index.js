@@ -1,20 +1,23 @@
 import React from 'react'
 
-import PrimaryButton from './../../../components/Buttons/Primary'
+import DeleteButton from './../../../components/Buttons/Delete'
 import SecondaryButton from './../../../components/Buttons/Secondary'
 
 import { FaRegStar, FaStar, FaStarHalfAlt } from 'react-icons/fa'
 import { BsPlusCircle } from 'react-icons/bs'
 
-const CardScholarships = ({ first }) => {
+const CardScholarships = ({ setModalVisibility, first }) => {
+
   return (
     <div className="card-scholarship">
       { first ? (
         <>
-          <BsPlusCircle color="#007A8D" size="64" />
+          <button className="_flex-1" onClick={setModalVisibility}>
+            <BsPlusCircle color="#007A8D" size="64" />
 
-          <h2 className="-bold -ft-size-1x _margin-b-1x _margin-t-4x">Adicionar curso</h2>
-          <p>Clique para adicionar bolsas de cursos do seu interesse</p>
+            <h2 className="-bold -ft-size-1x _margin-b-1x _margin-t-4x">Adicionar curso</h2>
+            <p>Clique para adicionar bolsas de cursos do seu interesse</p>
+          </button>
         </>
       ) : (
         <>
@@ -50,7 +53,7 @@ const CardScholarships = ({ first }) => {
           </div>
 
           <div className="_margin-t-2x">
-            <PrimaryButton title="Excluir" />
+            <DeleteButton title="Excluir" />
             <SecondaryButton title="Ver oferta" />
           </div>
         </>

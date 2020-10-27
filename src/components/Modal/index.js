@@ -1,15 +1,37 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import './styles.scss'
 
-import PrimaryButton from './../../components/Buttons/Primary'
+import CancelButton from './../../components/Buttons/Cancel'
 import SecondaryButton from './../../components/Buttons/Secondary'
 import FlatlistScholarships from './../../components/FlatlistScholarships'
 import CardFlatlistScholarships from './../../components/FlatlistScholarships/Card'
 
-const Modal = () => {
+const Modal = (
+  {
+    cities,
+    courses,
+    filters,
+    loadCoursesByCity,
+    modalVisibility,
+    setFilters,
+    setModalVisibility,
+    scholarships
+  }
+) => {
+  const [priceRange, setPriceRange] = useState(0)
+
+  const onChangeSlider = (e) => {
+    setPriceRange(e.target.value)
+
+    setFilters({
+      ...filters,
+      price: Number(e.target.value)
+    })
+  }
+
   return (
-    <div className="modal">
+    <div className={`modal ${modalVisibility ? "-visible" : ""}`}>
       <div className="modal-content">
         <h2 className="-bold _margin-b-1x">Adicionar bolsa</h2>
         <p>Filtre e adicione as bolsas de seu interesse.</p>
@@ -18,17 +40,21 @@ const Modal = () => {
           <div className="row">
             <div>
               <label className="label">Selecione sua cidade</label>
-              <select className="select">
+              <select className="select" onChange={loadCoursesByCity}>
                 <option></option>
-                <option>Teste</option>
+                {cities.map(city => {
+                  return <option key={city} value={city}>{city}</option>
+                })}
               </select>
             </div>
 
             <div>
               <label className="label">Selecione o curso de sua preferência</label>
-              <select className="select">
+              <select className="select" onChange={e => setFilters({ ...filters, course: e.target.value})}>
                 <option></option>
-                <option>Teste</option>
+                {courses.map(course => {
+                  return <option key={course} value={course}>{course}</option>
+                })}
               </select>
             </div>
           </div>
@@ -37,38 +63,44 @@ const Modal = () => {
               <label className="label">Como você quer estudar</label>
               <label className="custom-checkbox">
                 Presencial
-                  <input type="checkbox" name="kind-presencial" />
+                <input type="checkbox" name="kind-presencial" onClick={e => setFilters({ ...filters, kind_presencial: e.target.checked})} />
                 <span></span>
               </label>
 
               <label className="custom-checkbox">
                 A distância
-                  <input type="checkbox" kind="kind-ead" />
+                <input type="checkbox" kind="kind-ead" onClick={e => setFilters({ ...filters, kind_ead: e.target.checked})} />
                 <span></span>
               </label>
             </div>
 
             <div>
               <label className="label">Até quanto pode pagar?</label>
-
+              <p className="_margin-b-1x">R$ {priceRange}</p>
+              <input type="range" min="100" max="10000" value={priceRange} className="custom-range-input" onChange={onChangeSlider} />
             </div>
           </div>
         </section>
 
         <div className="_margin-t-4x _margin-b-1x _flex _space-between">
-          <b>Resultado</b>
+          <b>Resultados</b>
           <b className="_text-right">Ordernar por <span className="-secondary-blue">Nome da Faculdade</span></b>
         </div>
 
         <FlatlistScholarships>
-          <CardFlatlistScholarships />
-          <CardFlatlistScholarships />
-          <CardFlatlistScholarships />
-          <CardFlatlistScholarships />
+          {scholarships.length ? (
+            scholarships.map((scholarship, index) => {
+              return (
+                <CardFlatlistScholarships key={index} scholarship={scholarship} />
+              )
+            })
+          ) : (
+            <p className="_text-center _margin-b-2x _margin-t-2x">Nenhuma bolsa encontrada :(<br />Refaça sua busca com novos filtros</p>
+          )}
         </FlatlistScholarships>
 
         <div className="_flex _justify-end _margin-t-2x">
-          <PrimaryButton title="Cancelar" />
+          <CancelButton title="Cancelar" setModalVisibility={setModalVisibility} />
           <SecondaryButton title="Adicionar bolsa(s)" disabled />
         </div>
       </div>

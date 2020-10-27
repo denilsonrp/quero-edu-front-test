@@ -1,5 +1,6 @@
 @import './../../styles/settings/colors';
 @import './../../styles/settings/media-sizes';
+@import './../../styles/tools/mixins';
 
 .modal {
   align-items: center;
@@ -9,11 +10,21 @@
   justify-content: center;
   padding-top: 64px;
   position: absolute;
-  top: 0;
+  top: -100%;
   width: 100%;
+
+  @include transition(all, .5s);
+
+  &.-visible {
+    top: 0;
+  }
 
   .modal-content {
     background-color: $white;
+    display: flex;
+    flex-direction: column;
+    max-height: 90%;
+    overflow: auto;
     padding: 16px;
     width: 100%;
   }

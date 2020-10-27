@@ -1,0 +1,33 @@
+@import './../../styles/settings/colors';
+@import './../../styles/tools/mixins';
+
+.custom-range-input {
+  appearance: none;
+  background: $main-blue;
+  height: 4px;
+  outline: none;
+  width: 100%;
+
+  @include border-radius(8px);
+  @include transition(all, .5s);
+
+  &::-webkit-slider-thumb {
+    appearance: none;
+    background-color: $white;
+    border: 2px solid $main-blue;
+    cursor: pointer;
+    height: 30px;
+    width: 30px;
+
+    @include border-radius(100%);
+  }
+
+  &::-moz-range-thumb {
+    background: $main-blue;
+    cursor: pointer;
+    height: 25px;
+    width: 25px;
+
+    @include border-radius(100%);
+  }
+}
