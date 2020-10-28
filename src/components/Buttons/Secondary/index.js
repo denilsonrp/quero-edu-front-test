@@ -3,10 +3,10 @@ import React from 'react'
 import './../styles.scss'
 import './styles.scss'
 
-const SecondaryButton = ({ title, ...rest }) => {
+const SecondaryButton = ({ onClickFn, title, ...rest }) => {
 
   return (
-    <button className="btn -secondary" {...rest}>{ title }</button>
+    <button className="btn -secondary" {...rest} onClick={onClickFn}>{ title }</button>
   )
 
 }

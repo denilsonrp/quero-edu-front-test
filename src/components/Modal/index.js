@@ -12,9 +12,12 @@ const Modal = (
     cities,
     courses,
     filters,
+    handleAddScholarships,
+    handleSelectScholarship,
     loadCoursesByCity,
     modalVisibility,
     setFilters,
+    selectedScholarships,
     setModalVisibility,
     scholarships
   }
@@ -77,7 +80,7 @@ const Modal = (
             <div>
               <label className="label">Até quanto pode pagar?</label>
               <p className="_margin-b-1x">R$ {priceRange}</p>
-              <input type="range" min="100" max="10000" value={priceRange} className="custom-range-input" onChange={onChangeSlider} />
+              <input type="range" min="100" max="3000" step="50" value={priceRange} className="custom-range-input" onChange={onChangeSlider} />
             </div>
           </div>
         </section>
@@ -91,17 +94,26 @@ const Modal = (
           {scholarships.length ? (
             scholarships.map((scholarship, index) => {
               return (
-                <CardFlatlistScholarships key={index} scholarship={scholarship} />
+                <CardFlatlistScholarships
+                  handleSelectScholarship={handleSelectScholarship}
+                  index={index}
+                  key={scholarship.id}
+                  scholarship={scholarship}
+                />
               )
             })
           ) : (
-            <p className="_text-center _margin-b-2x _margin-t-2x">Nenhuma bolsa encontrada :(<br />Refaça sua busca com novos filtros</p>
+            <p className="_text-center _margin-t-4x">Nenhuma bolsa encontrada :(<br />Refaça sua busca com novos filtros</p>
           )}
         </FlatlistScholarships>
 
         <div className="_flex _justify-end _margin-t-2x">
           <CancelButton title="Cancelar" setModalVisibility={setModalVisibility} />
-          <SecondaryButton title="Adicionar bolsa(s)" disabled />
+          <SecondaryButton
+            title="Adicionar bolsa(s)"
+            onClickFn={handleAddScholarships}
+            disabled={!selectedScholarships.length}
+          />
         </div>
       </div>
     </div>

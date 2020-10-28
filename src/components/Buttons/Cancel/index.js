@@ -5,7 +5,6 @@ import './../styles.primary.scss'
 
 const CancelButton = (
   {
-    setFilters,
     setModalVisibility,
     title
   }

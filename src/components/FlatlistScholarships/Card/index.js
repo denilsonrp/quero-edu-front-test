@@ -1,11 +1,17 @@
 import React from 'react'
 
-const CardScholarships = ({ scholarship }) => {
+const CardScholarships = (
+  {
+    handleSelectScholarship,
+    index,
+    scholarship
+  }
+) => {
   return (
     <div className="card-scholarship">
       <div className="_flex _align-center _flex-1">
         <label className="custom-checkbox">
-          <input type="checkbox" name="" />
+          <input type="checkbox" data-index={index} onClick={handleSelectScholarship} />
           <span></span>
         </label>
 

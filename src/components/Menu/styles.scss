@@ -1,0 +1,31 @@
+@import './../../styles/settings/colors';
+@import './../../styles/settings/media-sizes';
+
+.menu {
+  background-color: $main-blue;
+  margin-bottom: 32px;
+  width: 100%;
+
+  ul {
+    display: flex;
+
+    li {
+      padding: 16px 24px;
+
+      &.-active {
+        background-color: $secondary-blue;
+      }
+
+      a {
+        color: $white;
+        font-weight: 700;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $md) {
+  .menu {
+
+  }
+}

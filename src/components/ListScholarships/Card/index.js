@@ -6,7 +6,15 @@ import SecondaryButton from './../../../components/Buttons/Secondary'
 import { FaRegStar, FaStar, FaStarHalfAlt } from 'react-icons/fa'
 import { BsPlusCircle } from 'react-icons/bs'
 
-const CardScholarships = ({ setModalVisibility, first }) => {
+const CardScholarships = (
+  {
+    first,
+    handleRemoveScholarship,
+    index,
+    scholarship,
+    setModalVisibility,
+  }
+) => {
 
   return (
     <div className="card-scholarship">
@@ -23,11 +31,11 @@ const CardScholarships = ({ setModalVisibility, first }) => {
         <>
           <div>
             <figure className="_margin-b-2x">
-              <img src="https://www.tryimg.com/u/2019/04/16/unicsul.png" alt="UNICSUL" />
+              <img src={scholarship.university.logo_url} alt={scholarship.university.name} />
             </figure>
 
-            <h2 className="-uppercase -bold -ft-size-1x _margin-b-1x">Anhanguera</h2>
-            <h3 className="-secondary-blue -bold -ft-size-1x _margin-b-2x">Arquitetura e Urbanismo</h3>
+            <h2 className="-uppercase -bold -ft-size-1x _margin-b-1x">{scholarship.university.name}</h2>
+            <h3 className="-secondary-blue -bold -ft-size-1x _margin-b-2x">{scholarship.course.name}</h3>
 
             <div className="wrapper-score">
               <p className="score -bold _margin-r-1x">3.8</p>
@@ -40,21 +48,39 @@ const CardScholarships = ({ setModalVisibility, first }) => {
 
             <hr />
 
-            <h3 className="-uppercase -bold -ft-size-1x _margin-b-2x">Presencial &bull; Noite</h3>
-            <p className="">Início das aulas em: 05/07/2019</p>
+            <h3 className="-uppercase -bold -ft-size-1x _margin-b-2x">{scholarship.course.kind} &bull; {scholarship.course.shift}</h3>
+            <p className="">Início das aulas em: {scholarship.start_date}</p>
 
             <hr />
 
-            <h3 className="-bold -ft-size-1x _margin-b-2x">Mensalidade com o Quero Bolsa:</h3>
-            <p className="-line-through _margin-b-1x">R$ 1.487,31</p>
-            <p className="">
-              <b className="-secondary-green -ft-size-1_25x">R$ 453,63</b> /mês
-            </p>
+            {
+              scholarship.enabled
+              ? (
+                <>
+                  <h3 className="-bold -ft-size-1x _margin-b-2x">Mensalidade com o Quero Bolsa:</h3>
+                  <p className="-line-through _margin-b-1x">R$ {scholarship.full_price}</p>
+                  <p className="">
+                    <b className="-secondary-green -ft-size-1_25x">R$ {scholarship.price_with_discount}</b> /mês
+                  </p>
+                </>
+              )
+              : (
+                <>
+                  <h3 className="-bold -ft-size-1x _margin-b-2x">Bolsa indisponível.</h3>
+                  <p>Entre em contato com nosso atendimento para saber mais.</p>
+                </>
+              )
+            }
+
           </div>
 
           <div className="_margin-t-2x">
-            <DeleteButton title="Excluir" />
-            <SecondaryButton title="Ver oferta" />
+            <DeleteButton
+              handleRemoveScholarship={handleRemoveScholarship}
+              index={index}
+              title="Excluir"
+            />
+            <SecondaryButton title="Ver oferta" disabled={!scholarship.enabled} />
           </div>
         </>
       )}

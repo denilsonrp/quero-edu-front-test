@@ -1,6 +1,59 @@
 @import './../../styles/settings/colors';
+@import './../../styles/settings/media-sizes';
+@import './../../styles/tools/mixins';
 
 .filter-enrollment-semester {
   margin-bottom: 32px;
   margin-top: 32px;
+
+  ul {
+    border: 1px solid $secondary-blue;
+    display: block;
+
+    @include border-radius(5px);
+
+    li {
+      border-color: $secondary-blue;
+      border-style: solid;
+      border-right-width: 0;
+      padding: 8px 16px;
+
+      &:not(:last-of-type) {
+        border-bottom-width: 1px;
+      }
+
+      &:hover {
+        opacity: .75;
+      }
+
+      &.-active {
+        background-color: $secondary-blue;
+
+        button {
+          color: $white;
+        }
+      }
+
+      button {
+        color: $secondary-blue;
+        font-weight: 700;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $md) {
+  .filter-enrollment-semester {
+    display: flex;
+    justify-content: flex-end;
+
+    ul {
+      display: inline-flex;
+
+      li:not(:last-of-type) {
+        border-bottom-width: 0;
+        border-right-width: 1px;
+      }
+    }
+  }
 }
