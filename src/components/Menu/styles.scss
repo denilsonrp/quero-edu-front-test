@@ -1,24 +1,68 @@
 @import './../../styles/settings/colors';
+@import './../../styles/settings/fonts';
 @import './../../styles/settings/media-sizes';
+
+#chkMenu:checked ~ ul {
+  display: block;
+}
 
 .menu {
   background-color: $main-blue;
+  height: 50px;
   margin-bottom: 32px;
+  position: relative;
   width: 100%;
 
-  ul {
+  .container {
+    align-items: center;
     display: flex;
+    height: 100%;
 
-    li {
-      padding: 16px 24px;
+    .section {
+      color: $white;
+      font-size: $font-size-base;
+      font-weight: 700;
+      margin-right: 24px;
+    }
 
-      &.-active {
-        background-color: $secondary-blue;
+    .label-menu {
+      align-items: center;
+      color: $white;
+      display: flex;
+      font-size: $font-size-base;
+      font-weight: 700;
+      margin-left: auto;
+
+      svg {
+        margin-left: 8px;
       }
+    }
 
-      a {
-        color: $white;
-        font-weight: 700;
+    ul {
+      display: none;
+      left: 0;
+      padding: 0;
+      position: absolute;
+      top: 50px;
+      width: 100%;
+
+      li {
+        align-items: center;
+        background-color: $main-blue;
+        display: flex;
+        height: 50px;
+        justify-content: center;
+        padding-left: 24px;
+        padding-right: 24px;
+
+        &.-active {
+          background-color: $secondary-blue;
+        }
+
+        a {
+          color: $white;
+          font-weight: 700;
+        }
       }
     }
   }
@@ -27,5 +71,20 @@
 @media screen and (min-width: $md) {
   .menu {
 
+    .container {
+
+      .label-menu {
+        display: none;
+      }
+
+      ul {
+        display: flex;
+        flex-direction: row;
+        left: auto;
+        position: relative;
+        top: 0;
+        width: auto;
+      }
+    }
   }
 }
