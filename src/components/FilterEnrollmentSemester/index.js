@@ -1,14 +1,41 @@
-import React from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 
 import './styles.scss'
 
-const FilterEnrollmentSemester = () => {
+const FilterEnrollmentSemester = (
+  {
+    selectedSemester,
+    setSelectedSemester,
+    scholarships
+  }
+) => {
+  const [semesters, setSemesters] = useState([])
+
+  useEffect(() => {
+    const uniqueSemesters = [...new Set(scholarships.map(scholarship => scholarship.enrollment_semester))]
+    setSemesters(uniqueSemesters)
+  }, [scholarships])
+
+  const selectSemester = useCallback((e) => {
+    const semester = e.target.getAttribute('data-semester')
+    setSelectedSemester(semester)
+  }, [setSelectedSemester])
+
   return (
     <div className="filter-enrollment-semester">
       <ul className="">
-        <li className="-active"><button>Todos os semestres</button></li>
-        <li><button>2º semestre de 2019</button></li>
-        <li><button>1º semestre de 2020</button></li>
+        <li className={!selectedSemester ? '-active' : ''}>
+          <button onClick={selectSemester} data-semester="">Todos os semestres</button>
+        </li>
+        {
+          semesters.map(semester => {
+            return (
+              <li key={semester} className={selectedSemester === semester ? '-active' : ''}>
+                <button onClick={selectSemester} data-semester={semester}>{semester}</button>
+              </li>
+            )
+          })
+        }
       </ul>
     </div>
   )

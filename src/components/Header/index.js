@@ -14,7 +14,7 @@ const Header = () => {
     <>
       <header className="header container">
         <div className="_flex _flex-1 _align-center">
-          <div className="_flex _align-center orientation">
+          <div className="info _flex _align-center orientation">
             <FaInfoCircle color="#007A8D" size="32" />
 
             <a href="/" className="_hide _show-xl _margin-l-1x">Como funciona</a>
@@ -37,7 +37,7 @@ const Header = () => {
         </figure>
 
         <div className="_flex _flex-1 _align-center _justify-end">
-          <div className="_flex _align-center orientation">
+          <div className="user _flex _align-center orientation">
             <a href="/" className="_hide _show-xl _margin-r-1x">Nome Sobrenome</a>
 
             <FaRegUserCircle color="#007A8D" size="32" />

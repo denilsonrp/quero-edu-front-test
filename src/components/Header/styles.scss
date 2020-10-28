@@ -5,6 +5,17 @@
   display: flex;
   height: 90px;
 
+  .info {
+    border-right: 3px solid $secondary-gray;
+    min-height: 60px;
+    padding-right: 16px;
+  }
+
+  .user {
+    border-left: 3px solid $secondary-gray;
+    padding-left: 16px;
+  }
+
   .orientation {
     flex-direction: column;
   }
@@ -17,6 +28,10 @@
 
 @media screen and (min-width: $xl) {
   .header {
+
+    .user {
+      border-width: 0;
+    }
 
     .orientation {
       flex-direction: row;

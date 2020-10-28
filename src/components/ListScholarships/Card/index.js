@@ -3,8 +3,10 @@ import React from 'react'
 import DeleteButton from './../../../components/Buttons/Delete'
 import SecondaryButton from './../../../components/Buttons/Secondary'
 
-import { FaRegStar, FaStar, FaStarHalfAlt } from 'react-icons/fa'
+import { FaRegStar, FaStar } from 'react-icons/fa'
 import { BsPlusCircle } from 'react-icons/bs'
+
+import formatMoney from './../../../utils/formatMoney'
 
 const CardScholarships = (
   {
@@ -38,12 +40,16 @@ const CardScholarships = (
             <h3 className="-secondary-blue -bold -ft-size-1x _margin-b-2x">{scholarship.course.name}</h3>
 
             <div className="wrapper-score">
-              <p className="score -bold _margin-r-1x">3.8</p>
-              <FaStar color="#DE9E1F" size="16" />
-              <FaStar color="#DE9E1F" size="16" />
-              <FaStar color="#DE9E1F" size="16" />
-              <FaStarHalfAlt color="#DE9E1F" size="16" />
-              <FaRegStar color="#DE9E1F" size="16" />
+              <p className="score -bold _margin-r-1x">{scholarship.university.score}</p>
+              {
+                [...Array(5)].map((_, index) => {
+                  const newIndex = index + 1
+
+                  return newIndex < scholarship.university.score
+                          ? <FaStar key={index} color="#DE9E1F" size="16" />
+                          : <FaRegStar key={index} color="#DE9E1F" size="16" />
+                })
+              }
             </div>
 
             <hr />
@@ -58,9 +64,9 @@ const CardScholarships = (
               ? (
                 <>
                   <h3 className="-bold -ft-size-1x _margin-b-2x">Mensalidade com o Quero Bolsa:</h3>
-                  <p className="-line-through _margin-b-1x">R$ {scholarship.full_price}</p>
+                  <p className="-line-through _margin-b-1x">{formatMoney(scholarship.full_price)}</p>
                   <p className="">
-                    <b className="-secondary-green -ft-size-1_25x">R$ {scholarship.price_with_discount}</b> /mês
+                    <b className="-secondary-green -ft-size-1_25x">{formatMoney(scholarship.price_with_discount)}</b> /mês
                   </p>
                 </>
               )

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 
 import './styles.scss'
 
@@ -6,6 +6,8 @@ import CancelButton from './../../components/Buttons/Cancel'
 import SecondaryButton from './../../components/Buttons/Secondary'
 import FlatlistScholarships from './../../components/FlatlistScholarships'
 import CardFlatlistScholarships from './../../components/FlatlistScholarships/Card'
+
+import { CgClose } from "react-icons/cg"
 
 const Modal = (
   {
@@ -24,6 +26,10 @@ const Modal = (
 ) => {
   const [priceRange, setPriceRange] = useState(0)
 
+  const closeModal = useCallback(() => {
+    setModalVisibility(false)
+  }, [setModalVisibility])
+
   const onChangeSlider = (e) => {
     setPriceRange(e.target.value)
 
@@ -35,6 +41,11 @@ const Modal = (
 
   return (
     <div className={`modal ${modalVisibility ? "-visible" : ""}`}>
+      <div className="close">
+        <CgClose size={36} color="#FFF" onClick={closeModal} />
+      </div>
+
+
       <div className="modal-content">
         <h2 className="-bold _margin-b-1x">Adicionar bolsa</h2>
         <p>Filtre e adicione as bolsas de seu interesse.</p>
@@ -80,7 +91,7 @@ const Modal = (
             <div>
               <label className="label">Até quanto pode pagar?</label>
               <p className="_margin-b-1x">R$ {priceRange}</p>
-              <input type="range" min="100" max="3000" step="50" value={priceRange} className="custom-range-input" onChange={onChangeSlider} />
+              <input type="range" min="0" max="3000" step="50" value={priceRange} className="custom-range-input" onChange={onChangeSlider} />
             </div>
           </div>
         </section>

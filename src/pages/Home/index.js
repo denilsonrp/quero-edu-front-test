@@ -26,6 +26,7 @@ const Home = () => {
   const [modalVisibility, setModalVisibility] = useState(false)
   const [selectedScholarships, setSelectedScholarships] = useState([])
   const [savedScholarships, setSavedScholarships] = useState([])
+  const [selectedSemester, setSelectedSemester] = useState(null)
   const [scholarships, setScholarships] = useState([])
 
   useEffect(() => {
@@ -39,6 +40,11 @@ const Home = () => {
     })
   }, [])
 
+  /**
+   * Call the API service with the params to be used to filter scholarships
+   *
+   * @function handleFilters
+   */
   const handleFilters = useCallback(() => {
     const { city, course, kind_presencial, kind_ead, price } = filters
 
@@ -57,10 +63,9 @@ const Home = () => {
   }, [filters, handleFilters])
 
   /**
-   * -
+   * Create a list of scholarships to be added in favorites scholarships list
    *
    * @function handleSelectScholarship
-   * @return -
    */
   const handleSelectScholarship = useCallback((e) => {
     const index = e.target.getAttribute('data-index')
@@ -75,13 +80,12 @@ const Home = () => {
   }, [scholarships, selectedScholarships])
 
   /**
-   * -
+   * Add an list of selected scholarships in list of favorites scholarships
    *
    * @function handleAddScholarships
-   * @return -
    */
   const handleAddScholarships = useCallback(() => {
-    const data = [...new Set([ ...savedScholarships, ...selectedScholarships ])]
+    const data = [...new Set([...savedScholarships, ...selectedScholarships])]
 
     storageService.store(data)
     setSavedScholarships(data)
@@ -91,10 +95,9 @@ const Home = () => {
   }, [savedScholarships, selectedScholarships])
 
   /**
-   * -
+   * Remove a selected scholarship from list of favorites scholarships
    *
    * @function handleRemoveScholarship
-   * @return -
    */
   const handleRemoveScholarship = useCallback((e) => {
     const index = e.target.getAttribute('data-index')
@@ -103,13 +106,13 @@ const Home = () => {
 
     storageService.store([...savedScholarships])
     setSavedScholarships([...savedScholarships])
+    setSelectedSemester(null)
   }, [savedScholarships])
 
   /**
-   * -
+   * Load courses by a specific city
    *
    * @function loadCoursesByCity
-   * @return -
    */
   const loadCoursesByCity = (e) => {
     const city = e.target.value
@@ -136,9 +139,16 @@ const Home = () => {
         <Breadcrumb />
 
         <h1 className="_margin-b-2x">Bolsas favoritas</h1>
-        <p className="">Adicione os cursos e faculdades de seu interesse e receba atualizações com as melhores ofertas.</p>
+        <p className="_margin-b-4x">Adicione os cursos e faculdades de seu interesse e receba atualizações com as melhores ofertas.</p>
 
-        <FilterEnrollmentSemester />
+        {
+        !!savedScholarships.length &&
+          <FilterEnrollmentSemester
+            selectedSemester={selectedSemester}
+            setSelectedSemester={setSelectedSemester}
+            scholarships={savedScholarships}
+          />
+        }
 
         <ListScholarships>
           <CardListScholarships
@@ -146,14 +156,31 @@ const Home = () => {
             key={0}
             setModalVisibility={setModalVisibility}
           />
-          {savedScholarships.map((scholarship, index) => {
-            return <CardListScholarships
-                    handleRemoveScholarship={handleRemoveScholarship}
-                    index={index}
-                    key={scholarship.id}
-                    scholarship={scholarship}
-                  />
-          })}
+
+          {
+            selectedSemester ? (
+              savedScholarships.filter(savedScholarship => savedScholarship.enrollment_semester === selectedSemester)
+                .map((scholarship, index) => {
+                  return <CardListScholarships
+                          handleRemoveScholarship={handleRemoveScholarship}
+                          index={index}
+                          key={scholarship.id}
+                          scholarship={scholarship}
+                        />
+                  }
+                )
+            ) : (
+              savedScholarships.map((scholarship, index) => {
+                return <CardListScholarships
+                        handleRemoveScholarship={handleRemoveScholarship}
+                        index={index}
+                        key={scholarship.id}
+                        scholarship={scholarship}
+                      />
+                }
+              )
+            )
+          }
         </ListScholarships>
       </div>
 

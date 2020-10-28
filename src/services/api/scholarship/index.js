@@ -2,6 +2,7 @@ import data from './../../../assets/json/db.json'
 
 /**
  * Get a list of scholarships, considering some filters (city, course, kind, price)
+ * Return sorted by university name
  *
  * @async
  * @function getScholarships
@@ -18,7 +19,7 @@ async function getScholarships({ filters }) {
   }
   if (filters.price) filteredScholarships = filteredScholarships.filter(scholarship => scholarship.price_with_discount <= filters.price)
 
-  return filteredScholarships
+  return filteredScholarships.sort((x, y) => x.university.name.localeCompare(y.university.name))
 }
 
 /**

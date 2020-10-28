@@ -1,5 +1,7 @@
 import React from 'react'
 
+import formatMoney from './../../../utils/formatMoney'
+
 const CardScholarships = (
   {
     handleSelectScholarship,
@@ -27,7 +29,7 @@ const CardScholarships = (
 
           <div className="">
             <p>Bolsa de <b className="-secondary-green">{scholarship.discount_percentage}%</b></p>
-            <p className="-secondary-green -bold">R$ {scholarship.price_with_discount} /mês</p>
+            <p className="-secondary-green -bold">{formatMoney(scholarship.price_with_discount)} /mês</p>
           </div>
         </div>
       </div>
